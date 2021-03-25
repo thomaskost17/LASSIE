@@ -1,0 +1,12 @@
+#CMAKE IGNORES
+build/*
+*.o
+*.exe
+
+# ARTIFACT IGNORES
+*.jpg
+*.csv
+
+# MATLAB IGNORES
+*.asv
+
