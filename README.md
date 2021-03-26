@@ -1,8 +1,7 @@
-# LASSIE
+# LASSIE <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Lassie.jpg" width="50" height="50">
 
 **L**ong r**A**nge **S**elf-**S**tabilizing **I**nertial and **E**ffigy sensor based quadcopter (LASSIE) is designed with the goal of creating a quadcopter that is both fun to fly and capable of autonomous path determination based upon image data. 
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Lassie.jpg" width="100" height="100">
 
 ## Usage
 
