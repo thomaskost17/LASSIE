@@ -55,7 +55,7 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:// Check whether there is data to be received
+  // Check whether there is data to be received
   if (radio.available()) {
     radio.read(&data, sizeof(Data_Package)); // Read the whole data and store it into the 'data' structure
     lastReceiveTime = millis(); // At this moment we have received the data
