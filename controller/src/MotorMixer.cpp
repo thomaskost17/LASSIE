@@ -44,10 +44,10 @@ void MotorMixer::write(int throttle, int pitch, int yaw, int roll){
     int M4 = throttle - yaw - pitch + roll;
 
     // Bound check before writing
-    M1 = (M1 > m_max_val)? m_max_val : ((M1 < m_min_val)? m_min_val : M1);
-    M2 = (M2 > m_max_val)? m_max_val : ((M2 < m_min_val)? m_min_val : M2);
-    M3 = (M3 > m_max_val)? m_max_val : ((M3 < m_min_val)? m_min_val : M3);
-    M4 = (M4 > m_max_val)? m_max_val : ((M4 < m_min_val)? m_min_val : M4);
+    M1 = (M1 > (int)m_max_val)? m_max_val : ((M1 < (int)m_min_val)? m_min_val : M1);
+    M2 = (M2 > (int)m_max_val)? m_max_val : ((M2 < (int)m_min_val)? m_min_val : M2);
+    M3 = (M3 > (int)m_max_val)? m_max_val : ((M3 < (int)m_min_val)? m_min_val : M3);
+    M4 = (M4 > (int)m_max_val)? m_max_val : ((M4 < (int)m_min_val)? m_min_val : M4);
 
     // Update motor commands
     analogWrite(m_M1_pin, M1);

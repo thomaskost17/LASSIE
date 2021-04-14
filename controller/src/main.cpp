@@ -14,20 +14,40 @@
 #include <RF24.h>
 #include <nRF24L01.h>
 #include <Wire.h>
+#include <MotorMixer.h>
 
-RF24 radio(10, 9);   // nRF24L01 (CE, CSN)
+// Define and declare globals
+
+// Pin numbers
+#define LF_MOTOR 2
+#define RF_MOTOR 4
+#define LR_MOTOR 5
+#define RR_MOTOR 6
+#define CSN      8
+#define CE       10
+#define LOW_POWER_LED 32
+
+// Memory Allocation
+
+// Motor Mixer
+MotorMixer motors(LF_MOTOR, RF_MOTOR, LR_MOTOR, RR_MOTOR);
+
+// Comms Global Variables
+RF24 radio(CE, CSN);   // nRF24L01 (CE, CSN)
 const byte address[6] = "00001";
 
 unsigned long lastReceiveTime = 0;
 unsigned long currentTime = 0;
 
-// Max size of this struct is 32 bytes - NRF24L01 buffer limit
 struct Data_Package {
-  byte j1PotX;
-  byte j1PotY;
+  // Max size of this struct is 32 bytes - NRF24L01 buffer limit
+  unsigned short j1PotX;
+  unsigned short j1PotY;
+  unsigned short j2PotX;
+  unsigned short j2PotY;
+
+ // note can combine button states into a single byte (only need one bit per reading)
   byte j1Button;
-  byte j2PotX;
-  byte j2PotY;
   byte j2Button;
   byte pot1;
   byte pot2;
@@ -40,6 +60,9 @@ struct Data_Package {
 };
 // Allocate Reciever Data buffer
 Data_Package data;
+
+// function declarations
+void resetData();
 
 void setup() {
   Serial.begin(9600);
